@@ -1,0 +1,68 @@
+.searchbar-input {
+  width: 710px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.77);
+  border-radius: 10px 10px 10px 10px;
+
+  border-width: 0px;
+  border: none;
+  outline: none;
+}
+
+#inputID::placeholder,
+.searchbar-input {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #6aa2d1;
+}
+
+#inputID {
+  text-indent: 15px;
+  padding: 0px;
+}
+
+.list-ul {
+  width: 710px;
+
+  background: rgba(255, 255, 255, 0.77);
+  border-radius: 0px 0px 10px 10px;
+
+  border-width: 0px;
+  border: none;
+  outline: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  text-align: left;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  gap: 15px;
+}
+
+.list-li {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #6aa2d1;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-right: auto;
+  padding-left: 15px;
+}
+
+.list-li:hover {
+  color: #d2b3c1;
+  cursor: pointer;
+}

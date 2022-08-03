@@ -15,7 +15,10 @@ const SearchBar = () => {
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      /* Define search scope here */
+      types: ['administrative_area_level_2'],
+      componentRestrictions: {
+        country: 'br',
+      },
     },
     debounce: 300,
   });
@@ -49,34 +52,32 @@ const SearchBar = () => {
     data.map((suggestion) => {
       const {
         place_id,
-        structured_formatting: { main_text, secondary_text },
+        structured_formatting: { main_text },
       } = suggestion;
 
       return (
-        <li key={place_id} onClick={handleSelect(suggestion)}>
-          <strong>{main_text}</strong> <small>{secondary_text}</small>
+        <li
+          className='list-li'
+          key={place_id}
+          onClick={handleSelect(suggestion)}
+        >
+          {main_text}
         </li>
       );
     });
 
   return (
     <div ref={ref}>
-      {/* <input
-        value={value}
-        onChange={handleInput}
-        disabled={!ready}
-        placeholder='Where are you going?'
-      /> */}
       <input
         className='searchbar-input'
         id='inputID'
         value={value}
         onChange={handleInput}
         // disabled={!ready}
-        placeholder='im unstopable'
+        placeholder='Digite o nome da cidade'
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
-      {status === 'OK' && <ul>{renderSuggestions()}</ul>}
+      {status === 'OK' && <ul className='list-ul'>{renderSuggestions()}</ul>}
     </div>
   );
 };
