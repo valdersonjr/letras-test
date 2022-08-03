@@ -1,0 +1,82 @@
+.wheather-information-display-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.city {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 43px;
+  line-height: 52px;
+
+  letter-spacing: 0.14em;
+
+  color: #ffffff;
+
+  margin-bottom: 5px;
+}
+
+.weather-description {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  margin-bottom: 5px;
+}
+
+.temperature {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 78px;
+
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
+}
+
+.max-temperature {
+  margin-right: 5px;
+}
+
+.icon-temperature {
+  margin-bottom: 5px;
+}
+
+.max-min-temperature {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  margin-bottom: 20px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.prediction {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+
+  cursor: pointer;
+  text-decoration: underline;
+  user-select: none;
+}

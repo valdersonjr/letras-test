@@ -4,3 +4,9 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
+p,
+span {
+  font-family: 'Montserrat';
+  user-select: none;
+}

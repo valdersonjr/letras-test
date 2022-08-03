@@ -1,31 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+
 import axios from 'axios';
 
+import openWheatherApiKey from '../../APIKeys/openWheatherAPIKey';
+
+import { WheatherInformationsDisplay } from '../../components';
 interface ICoordinates {
   lat: number;
   lng: number;
 }
 
 export default function WheatherInformations({ lat, lng }: ICoordinates) {
-  const [city, setCity] = useState<any>({});
+  const [cityData, setCityData] = useState<any>(null);
 
   const api = axios.create({
-    baseURL: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=0ae4dc84b7d0b1202da634265fc7fbf7`,
+    baseURL: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${openWheatherApiKey}`,
   });
 
   useEffect(() => {
     api
       .get('')
-      .then((response) => setCity(response.data))
+      .then((response) => {
+        setCityData(response.data);
+      })
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
       });
   }, []);
 
   return (
-    <div>
-      <div>awdawdaw</div>
-    </div>
+    <WheatherInformationsDisplay
+      city={cityData?.name}
+      weatherDescription={cityData?.weather[0]?.description}
+      temperature={cityData?.main?.temp}
+      maxTemperature={cityData?.main?.temp_max}
+      minTemperature={cityData?.main?.temp_min}
+    />
   );
 }
