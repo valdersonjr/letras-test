@@ -5,8 +5,20 @@ import usePlacesAutocomplete, {
 import useOnclickOutside from 'react-cool-onclickoutside';
 
 import './styles.css';
+import { WheatherInformations } from '../../pages';
 
-const SearchBar = () => {
+import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
+
+interface ICoordinates {
+  lat: number;
+  setLat: (e: number) => void;
+  setLng: (e: number) => void;
+}
+
+const SearchBar = ({ lat, setLat, setLng }: ICoordinates) => {
+  let navigate = useNavigate();
+
   const {
     ready,
     value,
@@ -22,6 +34,7 @@ const SearchBar = () => {
     },
     debounce: 300,
   });
+
   const ref = useOnclickOutside(() => {
     // When user clicks outside of the component, we can dismiss
     // the searched suggestions by calling this method
@@ -44,9 +57,17 @@ const SearchBar = () => {
       // Get latitude and longitude via utility functions
       getGeocode({ address: description }).then((results) => {
         const { lat, lng } = getLatLng(results[0]);
-        console.log('📍 Coordinates: ', { lat, lng });
+
+        setLat(lat);
+        setLng(lng);
       });
     };
+
+  useEffect(() => {
+    if (lat !== 0) {
+      navigate('/informations');
+    }
+  }, [lat]);
 
   const renderSuggestions = () =>
     data.map((suggestion) => {
@@ -57,9 +78,9 @@ const SearchBar = () => {
 
       return (
         <li
-          className='list-li'
           key={place_id}
           onClick={handleSelect(suggestion)}
+          className='list-li'
         >
           {main_text}
         </li>
@@ -73,7 +94,7 @@ const SearchBar = () => {
         id='inputID'
         value={value}
         onChange={handleInput}
-        // disabled={!ready}
+        disabled={!ready}
         placeholder='Digite o nome da cidade'
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}

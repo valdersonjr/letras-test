@@ -1,2 +1,2 @@
 export { SearchBar } from './searchbar';
-export { WeatherInformations } from './weatherinformations';
+export { WheatherInformationsDisplay } from './weatherinformationsdisplay';
