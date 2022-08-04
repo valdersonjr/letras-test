@@ -55,6 +55,12 @@
   margin-bottom: 5px;
 }
 
+.cloud-icon {
+  position: absolute;
+  width: 99.69px;
+  height: 100px;
+}
+
 .max-min-temperature {
   font-style: normal;
   font-weight: 400;
