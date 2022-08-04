@@ -12,7 +12,7 @@ interface ICoordinates {
 export default function Home({ lat, setLat, setLng }: ICoordinates) {
   return (
     <div className='home-container'>
-      <span className='home-text'>Como está o tempo hoje?</span>
+      <span className='home-text'>How is the weather today?</span>
       <SearchBar lat={lat} setLat={setLat} setLng={setLng} />
     </div>
   );

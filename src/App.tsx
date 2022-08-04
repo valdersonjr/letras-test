@@ -5,10 +5,27 @@ import { Forecast, Home, WheatherInformations } from './pages';
 
 import './styles.css';
 
+interface ICoordinates {
+  lat: number;
+  lng: number;
+}
+
 function App() {
   const [lat, setLat] = useState<number>(0);
   const [lng, setLng] = useState<number>(0);
+  const [toggle, setToggle] = useState<string>('./assets/toggle_off.png');
   let navigate = useNavigate();
+
+  const coordinates: ICoordinates = { lat: lat, lng: lng };
+
+  const handleToggleChange = () => {
+    if (toggle === './assets/toggle_off.png') {
+      setToggle('./assets/toggle_on.png');
+    }
+    if (toggle === './assets/toggle_on.png') {
+      setToggle('./assets/toggle_off.png');
+    }
+  };
 
   useEffect(() => {
     if (lat !== 0) {
@@ -18,6 +35,12 @@ function App() {
 
   return (
     <div>
+      <img
+        className='toggle-icon'
+        src={require(`${toggle}`)}
+        alt='Icon of a toggle button off'
+        onClick={handleToggleChange}
+      />
       <Routes>
         <Route
           path='/'
@@ -25,7 +48,9 @@ function App() {
         />
         <Route
           path='/informations'
-          element={<WheatherInformations lat={lat} lng={lng} />}
+          element={
+            <WheatherInformations coordinates={coordinates} toggle={toggle} />
+          }
         />
         <Route path='/forecast' element={<Forecast lat={lat} lng={lng} />} />
       </Routes>

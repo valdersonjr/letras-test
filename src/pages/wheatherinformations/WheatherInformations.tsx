@@ -10,11 +10,19 @@ interface ICoordinates {
   lng: number;
 }
 
-export default function WheatherInformations({ lat, lng }: ICoordinates) {
+interface ICoordinatesNToggle {
+  coordinates: ICoordinates;
+  toggle: string;
+}
+
+export default function WheatherInformations({
+  coordinates,
+  toggle,
+}: ICoordinatesNToggle) {
   const [cityData, setCityData] = useState<any>(null);
 
   const api = axios.create({
-    baseURL: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${openWheatherApiKey}`,
+    baseURL: `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lng}&appid=${openWheatherApiKey}`,
   });
 
   useEffect(() => {
@@ -31,6 +39,7 @@ export default function WheatherInformations({ lat, lng }: ICoordinates) {
   return (
     <WheatherInformationsDisplay
       city={cityData?.name}
+      toggle={toggle}
       weatherDescription={cityData?.weather[0]?.description}
       temperature={cityData?.main?.temp}
       maxTemperature={cityData?.main?.temp_max}

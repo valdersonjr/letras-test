@@ -1,0 +1,94 @@
+.forecast-info-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.forecast-city {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 43px;
+  line-height: 52px;
+  text-align: center;
+  letter-spacing: 0.14em;
+
+  color: #ffffff;
+}
+
+.five-forecast {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #ffffff;
+
+  margin-bottom: 90px;
+}
+
+.five-days-forecast-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+.forecast-date {
+  display: flex;
+  flex-direction: row;
+
+  gap: 5px;
+}
+
+.forecast-text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.temperature-five-forecast {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.gradient-line {
+  width: 176px;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #b5c69b 40.87%,
+    rgba(224, 151, 42, 0.53) 87.23%
+  );
+}
+
+.forecast-date {
+}
+
+.forecast-description {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+}

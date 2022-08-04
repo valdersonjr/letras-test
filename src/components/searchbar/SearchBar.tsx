@@ -77,7 +77,7 @@ const SearchBar = ({ lat, setLat, setLng }: ICoordinates) => {
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder='Digite o nome da cidade'
+        placeholder='Enter the city name'
       />
 
       {status === 'OK' && <ul className='list-ul'>{renderSuggestions()}</ul>}

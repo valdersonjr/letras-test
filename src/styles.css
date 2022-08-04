@@ -10,3 +10,11 @@ span {
   font-family: 'Montserrat';
   user-select: none;
 }
+
+.toggle-icon {
+  width: 95px;
+  height: 30px;
+
+  float: right;
+  margin: 50px;
+}
