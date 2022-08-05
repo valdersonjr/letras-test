@@ -7,12 +7,11 @@ import useOnclickOutside from 'react-cool-onclickoutside';
 import './styles.css';
 
 interface ICoordinates {
-  lat: number;
   setLat: (e: number) => void;
   setLng: (e: number) => void;
 }
 
-const SearchBar = ({ lat, setLat, setLng }: ICoordinates) => {
+const SearchBar = ({ setLat, setLng }: ICoordinates) => {
   const {
     ready,
     value,
@@ -52,11 +51,15 @@ const SearchBar = ({ lat, setLat, setLng }: ICoordinates) => {
     };
 
   const renderSuggestions = () =>
-    data.map((suggestion) => {
+    data.map((suggestion, key) => {
       const {
         place_id,
         structured_formatting: { main_text },
       } = suggestion;
+
+      if (key > 2) {
+        return;
+      }
 
       return (
         <li

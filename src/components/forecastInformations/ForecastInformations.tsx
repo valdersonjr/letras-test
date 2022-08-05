@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import FiveDaysForecast from './FiveDaysForecast';
@@ -11,7 +11,7 @@ interface IMaxMin {
 }
 interface ITimestamp {
   day: number;
-  week: string;
+  week: number;
   month: string;
 }
 
@@ -22,6 +22,7 @@ interface IForecastDisplayInformations {
 
 interface IDaysForecast {
   city: string;
+  toggle: string;
   timestamp: ITimestamp;
   day1: IForecastDisplayInformations;
   day2: IForecastDisplayInformations;
@@ -33,6 +34,7 @@ interface IDaysForecast {
 //change to array
 export default function ForecastInformations({
   city,
+  toggle,
   timestamp,
   day1,
   day2,
@@ -63,6 +65,7 @@ export default function ForecastInformations({
 
         <FiveDaysForecast
           timestamp={timestamp}
+          toggle={toggle}
           day1={day1}
           day2={day2}
           day3={day3}

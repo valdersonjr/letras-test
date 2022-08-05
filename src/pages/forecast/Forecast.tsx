@@ -5,12 +5,18 @@ import axios from 'axios';
 import { ForecastInformations } from '../../components';
 
 import openWheatherApiKey from '../../APIKeys/openWheatherAPIKey';
-import { findMaxMin } from '../../components/forecastInformations/calculations';
+
 import { getDayOfTheWeekName, getMonthName } from './calculations';
+import { findMaxMin } from '../../components/forecastInformations/calculations';
 
 interface ICoordinates {
   lat: number;
   lng: number;
+}
+
+interface ICoordinatesNToggle {
+  coordinates: ICoordinates;
+  toggle: string;
 }
 interface IMaxMin {
   max: number;
@@ -19,7 +25,7 @@ interface IMaxMin {
 
 interface ITimestamp {
   day: number;
-  week: string;
+  week: number;
   month: string;
 }
 
@@ -29,11 +35,11 @@ interface IForecastDisplayInformations {
   weatherDescription: string;
 }
 
-export default function Forecast({ lat, lng }: ICoordinates) {
+export default function Forecast({ coordinates, toggle }: ICoordinatesNToggle) {
   const [forecast, setForecast] = useState<any>(null);
 
   const api = axios.create({
-    baseURL: `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${openWheatherApiKey}`,
+    baseURL: `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lng}&appid=${openWheatherApiKey}`,
   });
 
   useEffect(() => {
@@ -103,38 +109,33 @@ export default function Forecast({ lat, lng }: ICoordinates) {
 
   const day1 = {
     temperature: day1temp,
-
-    weatherDescription: forecast?.list[0]?.weather?.description,
+    weatherDescription: forecast?.list[0]?.weather[0]?.description,
   } as IForecastDisplayInformations;
 
   const day2 = {
     temperature: day2temp,
-
-    weatherDescription: forecast?.list[8]?.weather?.description,
+    weatherDescription: forecast?.list[8]?.weather[0]?.description,
   } as IForecastDisplayInformations;
 
   const day3 = {
     temperature: day3temp,
-
-    weatherDescription: forecast?.list[16]?.weather?.description,
+    weatherDescription: forecast?.list[16]?.weather[0]?.description,
   } as IForecastDisplayInformations;
 
   const day4 = {
     temperature: day4temp,
-
-    weatherDescription: forecast?.list[24]?.weather?.description,
+    weatherDescription: forecast?.list[24]?.weather[0]?.description,
   } as IForecastDisplayInformations;
 
   const day5 = {
     temperature: day5temp,
-
-    weatherDescription: forecast?.list[32]?.weather?.description,
+    weatherDescription: forecast?.list[32]?.weather[0]?.description,
   } as IForecastDisplayInformations;
 
   let date = new Date(forecast?.list[38]?.dt * 1000);
 
   const day = date.getDate();
-  const week = getDayOfTheWeekName(date.getDay());
+  const week = date.getDay();
   const month = getMonthName(date.getMonth());
 
   const timestamp: ITimestamp = { day: day, week: week, month: month };
@@ -142,6 +143,7 @@ export default function Forecast({ lat, lng }: ICoordinates) {
   return (
     <ForecastInformations
       city={forecast?.city?.name}
+      toggle={toggle}
       timestamp={timestamp}
       day1={day1}
       day2={day2}

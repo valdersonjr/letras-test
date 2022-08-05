@@ -4,7 +4,7 @@ export function kelvinConverterToType(K: number, type: string) {
   if (type === 'celsius') {
     convertedTemperature = K - 273.15;
   } else if (type === 'fahrenheit') {
-    convertedTemperature = K - 459.67;
+    convertedTemperature = K + 459.67;
   } else {
     console.log('that type is yet not supported');
   }

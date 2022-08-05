@@ -17,4 +17,4 @@ open http://localhost:3000/
 
 ```
 
-> Dias trabalhados no projeto: 3
+> Days worked on this project: 3

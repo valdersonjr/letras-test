@@ -52,7 +52,10 @@ function App() {
             <WheatherInformations coordinates={coordinates} toggle={toggle} />
           }
         />
-        <Route path='/forecast' element={<Forecast lat={lat} lng={lng} />} />
+        <Route
+          path='/forecast'
+          element={<Forecast coordinates={coordinates} toggle={toggle} />}
+        />
       </Routes>
     </div>
   );

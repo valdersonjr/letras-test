@@ -7,6 +7,8 @@
   border-width: 0px;
   border: none;
   outline: none;
+
+  margin-bottom: 3px;
 }
 
 #inputID::placeholder,

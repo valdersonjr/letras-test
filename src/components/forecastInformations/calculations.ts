@@ -31,3 +31,15 @@ export function findMaxMin(
 
   return maxMin;
 }
+
+export function findIcon(description: string): string {
+  if (description === 'clear sky') {
+    return '../../assets/clear_sky.png';
+  } else if (description === 'few clouds') {
+    return '../../assets/few_clouds.png';
+  } else if (description === 'heavy rain') {
+    return '../../assets/heavy_rain.png';
+  } else {
+    return '../../assets/no_icon.png';
+  }
+}
