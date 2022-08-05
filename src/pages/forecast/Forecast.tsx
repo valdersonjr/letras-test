@@ -6,7 +6,7 @@ import { ForecastInformations } from '../../components';
 
 import openWheatherApiKey from '../../APIKeys/openWheatherAPIKey';
 
-import { getDayOfTheWeekName, getMonthName } from './calculations';
+import { getMonthName } from './calculations';
 import { findMaxMin } from '../../components/forecastInformations/calculations';
 
 interface ICoordinates {
