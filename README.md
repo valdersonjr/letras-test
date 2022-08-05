@@ -18,3 +18,5 @@ open http://localhost:3000/
 ```
 
 > Days worked on this project: 3
+
+- Sorry for the commits :D
